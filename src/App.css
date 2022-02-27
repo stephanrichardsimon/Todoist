@@ -1,4 +1,23 @@
-.App {
-  padding: 0 30px;
+* {
+    box-sizing: border-box;
 }
-
+body {
+    background-color: #f7fafc;
+}
+.App {
+    padding: 0 30px;
+}
+.App > h1{
+    text-align: center;
+}
+#novoComentario {
+    background-color: rgba(102, 105, 101, 0.8);
+    color: white;
+    padding: 1%;
+    border-radius: 8px;
+}
+#novoComentario > button {
+    min-width: 120px;
+    width: 10%;
+    margin: auto calc(40%);
+}

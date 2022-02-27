@@ -50,7 +50,7 @@ class App extends Component {
                     );
                 })}
 
-                <form method="post" onSubmit={this.adicionarComentario}>
+                <form id="novoComentario" method="post" onSubmit={this.adicionarComentario}>
                     <div className="form-group">
                         <label for="exampleFormControlInput1">Nome</label>
                         <input 
@@ -59,6 +59,7 @@ class App extends Component {
                             name="nome"
                             value={this.state.novoComentario.nome}
                             onChange={this.digitacao}
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -70,6 +71,7 @@ class App extends Component {
                             value={this.state.novoComentario.email}
                             onChange={this.digitacao}
                             placeholder="name@example.com"
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -81,6 +83,7 @@ class App extends Component {
                             name="mensagem"
                             value={this.state.novoComentario.mensagem}
                             onChange={this.digitacao}
+                            required
                             rows="3"
                         ></textarea>
                     </div>
