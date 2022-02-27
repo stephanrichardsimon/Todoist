@@ -4,20 +4,7 @@ import Comentario from "./components/Comentario";
 
 class App extends Component {
     state = {
-        comentarios: [
-            {
-                nome: "Hubert",
-                email: "hubert@mail.com",
-                data: new Date(2022, 2, 23),
-                mensagem: "Ói",
-            },
-            {
-                nome: "William",
-                email: "will@mail.com",
-                data: new Date(2022, 2, 23),
-                mensagem: "Ói, tudo bem?",
-            },
-        ],
+        comentarios: [],
         novoComentario: {
             nome: "",
             email: "",
@@ -33,6 +20,12 @@ class App extends Component {
             novoComentario: {nome: '', email: '', mensagem: ''}
         });
     };
+
+    removerComentario = comentario => {
+        let lista = this.state.comentarios;
+        lista = lista.filter(c => c !== comentario)
+        this.setState({ comentarios: lista })
+    }
 
     digitacao = e => {
         const {name, value} = e.target
@@ -50,6 +43,7 @@ class App extends Component {
                             nome={comentario.nome}
                             email={comentario.email}
                             data={comentario.data}
+                            onRemove = {this.removerComentario.bind(this, comentario)}
                         >
                             {comentario.mensagem}
                         </Comentario>
@@ -57,33 +51,33 @@ class App extends Component {
                 })}
 
                 <form method="post" onSubmit={this.adicionarComentario}>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label for="exampleFormControlInput1">Nome</label>
                         <input 
                             type="text" 
-                            class="form-control" 
+                            className="form-control" 
                             name="nome"
                             value={this.state.novoComentario.nome}
                             onChange={this.digitacao}
                         />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label for="exampleFormControlInput1">Email</label>
                         <input
                             type="email"
-                            class="form-control"
+                            className="form-control"
                             name="email"
                             value={this.state.novoComentario.email}
                             onChange={this.digitacao}
                             placeholder="name@example.com"
                         />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label for="exampleFormControlTextarea1">
                             Mensagem
                         </label>
                         <textarea
-                            class="form-control"
+                            className="form-control"
                             name="mensagem"
                             value={this.state.novoComentario.mensagem}
                             onChange={this.digitacao}
